@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
 router.get('/message', function(req, res) {
+  console.log(req.headers);
+  res.header({
+    "custom-header": "Valor personalizado"
+  });
+  res.header('otro-header', 'Otro valor');
   res.send('Hola desde GET');
 });
 
