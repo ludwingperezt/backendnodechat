@@ -30,6 +30,8 @@ router.post('/message', function(req, res) {
   response.success(req, res, 'Creado correctamente', 201);
 });
 
+// levantar el servidor de estáticos de express
+app.use('/app', express.static('public'));
 
 app.listen(3000);
 
