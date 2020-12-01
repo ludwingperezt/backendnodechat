@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const response = require('./network/response');
+
 const router = express.Router();
 
 const app = express();
@@ -16,13 +18,16 @@ router.get('/message', function(req, res) {
     "custom-header": "Valor personalizado"
   });
   res.header('otro-header', 'Otro valor');
-  res.send('Hola desde GET');
+  
+  //res.send('Hola desde GET');
+  response.success(req, res, 'Lista de mensajes');
 });
 
-router.delete('/message', function(req, res) {
+router.post('/message', function(req, res) {
   console.log(req.body);
   console.log(req.query);
-  res.send('Mensaje ' + req.body.text + ' agregado correctamente');
+  // res.send('Mensaje ' + req.body.text + ' agregado correctamente');
+  response.success(req, res, 'Creado correctamente', 201);
 });
 
 
