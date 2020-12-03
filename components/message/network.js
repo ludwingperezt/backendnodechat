@@ -4,14 +4,13 @@ const controller = require('./controller');
 const router = express.Router();
 
 router.get('/', function(req, res) {
-  console.log(req.headers);
-  res.header({
-    "custom-header": "Valor personalizado"
-  });
-  res.header('otro-header', 'Otro valor');
-  
-  //res.send('Hola desde GET');
-  response.success(req, res, 'Lista de mensajes');
+  controller.getMessages()
+  .then((messageList) => {
+    response.success(req, res, messageList, 200);
+  })
+  .catch(e => {
+    response.error(req,res, 'Error inesperado', 500, e);
+  })
 });
 
 router.post('/', function(req, res) {
@@ -20,7 +19,7 @@ router.post('/', function(req, res) {
       response.success(req, res, fullMessage, 201);
     })
     .catch(e => {
-      response.error(req, res, 'Información inválida', 400, 'Error en el contenido');
+      response.error(req, res, 'Información inválida', 400, e);
     });
 });
 
