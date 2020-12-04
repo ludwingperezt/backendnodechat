@@ -1,6 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./db');
 const router = require('./network/routes');
+
+const url = `mongodb://admin1:admin1@localhost:27017/chatdb`;
+
+db(url);
 
 const app = express();
 
