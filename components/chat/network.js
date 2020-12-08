@@ -14,8 +14,8 @@ router.post('/', function(req, res) {
     });
 });
 
-router.get('/', function(req, res) {
-  controller.getChats()
+router.get('/:userId', function(req, res) {
+  controller.getChats(req.params.userId)
     .then(data => {
       response.success(req, res, data, 200);
     })
