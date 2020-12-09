@@ -14,6 +14,10 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
+  // console.log(req.headers.authorization);
+  // console.log(req.headers['authorization']);
+  // console.log(req.headers['x-other']);
+
   controller.getUsers()
   .then((userList) => {
     response.success(req, res, userList, 200);

@@ -12,6 +12,7 @@ const config = require('./config');
 
 db(config.dbUrl);
 
+// Lee el puerto del archivo de configuración .env para verificar que funciona.
 console.log(process.env.PORT);
 
 app.use(cors());
